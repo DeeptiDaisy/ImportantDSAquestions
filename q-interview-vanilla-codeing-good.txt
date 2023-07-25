@@ -1,0 +1,204 @@
+You need to create a unique username.  The username needs to have the first letter of the first and last name of the user along with the current 10 digit unix timestamp and three random digits at the end. If the first or last name are missing, replace the first letter(s) with 'X'.  How would you proceed?
+2.You need to count the number of lines in a text file that end in a carriage return (ASCII code 13) as well as the average length of those lines.  The file may be large.  What programming process would you use?
+ Read the file line by line. As each line is read in, add one to a counter. Once that is done reload the file line by line a assign a counter for the length of the line. Once that has been completed, divide the counter for the length of the lines by the counter for the number of lines. Output the number of lines and the number produced by the division.
+ Read in the whole file. Split the contents by carriage returns. Divide the length of the whole file by the count of the split by carriage returns. Output the length of the split by carriage returns and the number produced by the division.
+ Read the file line by line and assign a counter for the number of lines as well as an array to store the line length. Once the file has been fully read, determine the average line length by going through the array of line lengths to add up the line lengths, then divide the result by the length of the array to get the average line length. Output the number of lines counted and the average line length.
+ Read the file line by line and assign a counter for the number of lines. For each line read in, add the length of the line to a variable storing sum of all line lengths. Once the file is fully read, output the counter of the number of lines and the result from dividing the sum of all line lengths by the number of lines.
+
+
+3.You have been asked to count the number of times each word (including alphanumeric sequences such as "user123") appears in a file.  All other characters, such as spaces and end-of-line markers, are to be ignored.  The files will vary in size.  What process would you use to achieve the required result?
+ For each line read in from a file, split by non-alphanumeric characters. Cycle through each non-empty sequence and see if it has been stored in an array already. If it hasn't been stored, then store the sequence in an array and give it the count of 1. If the sequence is already stored, increment the sequence in the array by one. Output the array of sequences and associated counts once file has been fully read.
+ Read in the whole file into a single string. Step through the string and once a non-alphanumeric character is found use the Linux grep command to search the remaining string to see how many times it appears in the file, then output the sequence and total. Once that is done move on to the next sequence. Continue until the full string has been parsed.
+ For each line read in from a file, split by non-alphanumeric characters. Cycle through each non-empty sequence and store the sequence in a database. Once the file is fully read, do a database query producing the counts of each sequence.
+ For each line read in from a file, remove all non-alphanumeric characters and see if the remaining sequences of alphanumeric characters has been stored in an array. If the sequence has not yet been stored, store the sequence in an array and give it the count of one. If the sequence has already been stored, increment the sequence in the array by one. Output the array of sequences and associated counts once file has been fully read.
+
+4.Your task is to read in a pipe-delimited text file and to clean its content.  Each potential record in on it's own line terminated with a carriage return.  The cleaned content needs to be stored in a database.  Records with missing or invalid data need to be stored in a separate text file for manual processing.  When you write the code to complete the task, which approach do you use?
+ Read in the file and, as each line is read, split the line into variables by using the pipe as the delimiter, then check that each field is not null before loading the full record into the database. Once on the database carry out field-specific validation of each database field. Each time a record with invalid or missing fields is identified, it is added to a separate text file for manual processing.
+ Read in the file and, as each line is read, split the line into variables by using the pipe as the delimiter, then carry out field-specific validation of each field. If all fields are valid store the full record into the database. Each time a record with invalid or missing fields is identified, it is added to a separate text file for manual processing.
+ Read in the file and then, as each line is read, load each line into a temporary table in the database as it is read, then extract each database record to split it into separate database fields, then load the fields into the permanent database table after cleaning. Each time a record with invalid or missing fields is identified, it is added to a separate text file for manual processing.
+ Read in the entire file and store it in a NoSQL database collection where it can easily be queried, and conduct validation as needed only when queried. Each time a record is queried and found to contain missing or invalid data, it is removed from the database collection and added to a separate text file for manual processing.
+
+5.You are asked to generate a list of integers and their associate squares (that is the integer to the power of 2) where the square does not exceed a given number.  As an example if given the number 50, the highest square value to be output would be 49.  What steps are needed for this programming snippet to produce the correct output?
+Given the number, create a loop that goes from 1 to that number. Calculate the square of each number in the loop and output the number and its square.
+ Given the number, create a loop that goes from 1 to the square root of that number. Calculate the square of each number in the loop and output each number and its square.
+ Given the number, create a loop that goes from 1 to that number. Calculate the square of each number in the loop and if it is less than the given number then output the number and its square.
+ Given the number, create a loop that goes from 1 to that number. Calculate the square of each number in the loop and if it is less than the given number output the result. Once the highest square number is reached, jump out of the loop.
+
+6.Which Javascript function takes a string as a parameter and returns the string with the HTML tags removed?
+ function stripHTMLTags(text) { const element = document.createelement('div'); element.innerHTML = text; return element.textContent || element.innerText; }
+ function stripHTMLTags(text) { return text.replace(/<[^>]*>/g, ''); }
+ function stripHTMLTags(text) { const element = document.createElement('div'); element.innerHTML = text; let strippedText = ''; for (const child of element.childNode) { if (child.nodeType === Node.TEXT_NODE) { strippedText += child.nodeValue; } } return strippedText; }
+ function stripHTMLTags(text) { const doc = new DOMParser().parseFromString(text, 'text/html'); return doc.body.textContent || ""; }
+
+7.Which Javascript function returns a random hexadecimal color?
+ function getRandomColor() { const letters = '0123456789ABCDEF'; const randomIndex = () => Math.floor(Math.random() * 16); const generateColor = (color, length) => { if (length === 6) { return color; } else { return generateColor(color + letters[randomIndex()], length + 1); } }; return generateColor('', 0); }
+ function getRandomColor() { const letters = '0123456789ABCDEF'; let color = '#'; for (let i = 0; i <= 6; i++) { color += letters[Math.floor(Math.random() * 16)]; } return color; }
+ function getRandomColor() { const letters = 'FF0123456789ABCDEF'; let color = '#'; for (let i = 0; i < 6; i++) { color += letters[(Math.random() * 16) | 0]; } return color; }
+ function getRandomColor() { const letters = '0123456789ABCDEF'; let color = '#'; let i = 0; while (i < 6) { color += letters[Math.floor(Math.random() * 16)]; j++; } return color; }
+
+8.write a javascript function that given an element id toggles the display of that element between "none" and "block"?
+ function toggleDisplay(elementName) { const element = document.getElementById(elementId); if (element) { if (window.getComputedStyle(element).display === 'none') { element.style.display = 'block'; } else { element.style.display = 'none'; } } }
+ function toggleDisplay(elementName) { let element = document.getElementById(elementName); if (element) { let displayType = "none"; if (element.style.display === "none") { displayType = "block"; } element.style.display = displayType; } }
+ function toggleDisplay(elementName) { const elements = document.getElementsByName(elementName); for (const element of elements) { if (window.getComputedStyle(element).display === 'none') { element.style.display = 'block'; } else { element.style.display = 'none'; } } }
+ function toggleDisplay(elementName) { const element = document.querySelector(elementName); if (element) { element.style.display = element.style.display === "none" ? "block" : "none"; } }
+
+9.Which Javascript function converts a passed in value from a decimal number into a binary number?
+ function decimalToBinary(decimalNumber) { if (decimalNumber === 0) { return '0'; } let binary = ''; let number = decimalNumber; while (number > 0) { binary = (number / 2) + binary; number = Math.floor(number / 2); } return binary; }
+ function decimalToBinary(decimalNumber) { if (decimalNumber === 0) { return '0'; } else if (decimalNumber === 1) { return '1'; } else { return decimalToBinary(Math.floor(decimalNumber / 2)) + (decimalNumber % 2); } }
+ function decimalToBinary(decimalNumber) { decimalNumber = parseInt(decimalNumber); let binary = '0'; if (decimalNumber && decimalNumber > 0) { binary = ''; while (decimalNumber > 0) { binary = (decimalNumber % 2) + binary; decimalNumber = Math.floor(decimalNumber / 2); } } return binary; }
+ function decimalToBinary(decimalNumber) { if (decimalNumber === 0) { return '0'; } let binary = ''; for (let number = decimalNumber; number > 0; number = Math.floor(number / 2)) { binary = (number % 2) + binary; } return binary; }
+10.Which Javascript function takes the name of a form, id of an input variable and a value and either changes the current value to the parameter passed value or creates a new hidden input variable with the passed in value?  If the variable exists but is not hidden the function is not meant to update the value of the variable.
+ function setFormInput(formName, inputName, inputValue) { const form = document.forms[formName]; const inputElements = form.elements[inputName]; if (inputElements) { const lastIndex = inputElements.length - 1; inputElements[lastIndex].value = inputValue; } else { const inputElement = document.createElement('input'); inputElement.type = 'hidden'; inputElement.name = inputName; inputElement.value = inputValue; form.appendChild(inputElement); } }
+ function setFormInput(formName, inputName, inputValue) { inputValue = encodeURIComponent(inputValue); if (document.getElementById(formName)) { if (document.getElementById(inputName)) { if (document.getElementById(inputName).type == "hidden") { document.getElementById(inputName).setAttribute("value",inputValue); } } else { let inputElement = document.createElement("input"); inputElement.setAttribute("type","hidden"); inputElement.setAttribute("name",inputName); inputElement.setAttribute("value",inputValue); document.getElementById(formName).appendChild(InputElement); } } }
+ function setFormInput(formName, inputName, inputValue) { const form = document.forms[formName]; const inputElements = form.elements[inputName]; if (inputElements) { for (let i = inputElements.length - 1; i >= 0; i--) { if (inputElements[i].type === 'hidden') { inputElements[i].value = inputValue; return; } } } else { const inputElement = document.createElement('input'); inputElement.name = inputName; inputElement.value = inputValue; form.appendChild(inputElement); } }
+ function setFormInput(formName, inputName, inputValue) { const form = document.forms[formName]; let inputElement = form.elements[inputName]; if (!inputElement) { inputElement = document.createElement('input'); inputElement.type = 'hidden'; inputElement.name = inputName; form.appendChild(inputElement); } inputElement.value = inputValue; }
+
+11.Which answer contains only and all of the javascipt arithmetic operators?
+ !, ||, &&
+ &, |, ~, ^, <<, >>
+ =, +, -, * , /
+ =, >, <, <=, >=, !=
+ + , - , * , / , %, ++, --
+
+12.What value will the following code output (console.log)?
+
+var x={},
+  y={key:"y"},
+  a={key:"z"},
+  z={key:"z"};
+x[y] = 11;
+x[z] = 21;
+x[a] = 43;
+console.log(x[y]);
+
+43
+
+13.How do you write a switch statement in JavaScript?
+ switch (CONDITION) { case "a": // A break; case "b": // B break; }
+ case (CONDITION) { switch "a": // A switch "b": // B }
+ switch (CONDITION) { select "a": // A select "b": // B }
+ select CONDITION: case "a": // A case "b": // B
+ switch (CONDITION): case ("a"){ // A } case ("b"){ // B }
+
+14.Consider the following class:
+
+class MyClass {
+    constructor(name){
+        this.name = name;
+    }
+    greet(){
+        alert("Hello this is " + this.name)
+    }
+}
+
+How do you set the name and then call the greet method?
+ steve = new MyClass("steve"); steve.greet();
+ MyClass.greet("steve");
+ steve = MyClass("steve"); steve.greet();
+ greet().MyClass("steve");
+ MyClass("steve").greet();
+
+15What does the array.map method do?
+
+16. Consider the following code:
+
+var cars=2;
+do{
+  cars/=2;
+}while(cars<1);
+console.log("Number of cars: " + cars);
+
+What would the console.log output?
+ Number of cars: undefined
+ Number of cars: 1
+ Number of cars: cars
+ Number of cars: 0
+ Number of cars: 2
+
+
+16.How do you create a new div element in JavaScript?How do you create a new div element in JavaScript?
+
+
+18.Will the following for loop complete?
+
+var i = 1;
+for (;i<4;){
+  i = i + 1;
+}
+ Yes, without errors
+ Yes, but with errors
+ No, without errors
+ No, with errors
+
+19.Which of the following can AJAX (Asynchronous Javascript And XML) NOT be used for?
+ Receiving data from a webserver at regular intervals
+ Upload an image from a clients computer to a webserver
+ Sending data to a webserver at regular intervals
+ Uploading and receiving data without refreshing or going to a new webpage
+ Removing files on the clients computer
+
+
+20.Which line of code which would replace "LINE OF CODE GOES HERE" make the following code work without errors or infinite loops?
+
+var i=0;
+do {
+  i++;
+    if (i==5){
+      LINE OF CODE GOES HERE
+      i=0;
+    }
+}while(i<7);
+ stop;
+ continue;
+ i=8;
+ i=4;
+ freeze;
+
+21. Consider the following code:
+
+(new Promise((resolve,reject)=>{
+    setTimeout(()=>resolve(),1000);
+    reject();
+}))
+.then(()=>console.log("Done"))
+.catch(()=>console.log("Error"))
+
+What is the output and why?
+ Error because the promise was rejected before it was resolved and the console.log("Error") was in the promises catch method
+ Error because you cannot make a promise like this
+ Done because the promise is resolved in the setTimeout
+ Done because it is in the promises then method which happens after the promise is finished
+ Error because there was an error in the code
+
+
+Consider the following code:
+
+let items = document.querySelectorAll(".item");
+items.forEach(item=>{
+    item.addEventListener("mouseover",e=>{
+        e.target.style = "background-color: blue;";
+    })
+});
+
+What does it do?
+ Makes it so the first element with the class "item" has its background turn blue when the mouse moves over it
+ Nothing
+ Makes it so all elements with the id "item" have their background turn blue when the mouse moves over them
+ Makes it so all elements with the class "item" have their background turn blue when the mouse moves over them
+ Makes all elements with the class "item" background's turn blue when the mouse hovers over one element with the class "item"
+
+
+Consider the following function:
+
+function myFunc(){
+    return new Promise((resolve,reject)=>{
+        setTimeout(()=>resolve(),5000);
+    });
+}
+
+What does it do?
+ Returns a promise that resolves immediately because it is not asynchronous
+ Returns a new promise that will resolve in 5 seconds
+ Nothing
+ Returns a new promise that will throw an error
+ Throws an error
