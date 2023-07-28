@@ -1,4 +1,4 @@
-Certainly! Here's an extended version of the README file with 10 interview questions and answers for HTML, CSS, and JavaScript:
+Certainly! Here's an extended interview questions and answers for HTML, CSS, and JavaScript:
 
 # Interview Questions and Answers - HTML, CSS, and JavaScript
 
@@ -53,6 +53,19 @@ This README contains a compilation of frequently asked interview questions relat
 
 4. **Explain the usage of `let`, `const`, and `var` in variable declaration.**
    - `let` and `const` are block-scoped variables introduced in ES6. `let` allows reassignment, while `const` declares constants that can't be reassigned. `var` is function-scoped and pre-ES6.
+    Certainly! Here's a table comparing the differences between `var`, `let`, and `const` in JavaScript:
+
+| Feature                 | var                                          | let                                       | const                                     |
+|-------------------------|----------------------------------------------|-------------------------------------------|-------------------------------------------|
+| Scope                   | Function-scoped (accessible within a function) | Block-scoped (accessible within a block)  | Block-scoped (accessible within a block)  |
+| Hoisting                | Hoisted to the top of the function          | Hoisted to the top of the block          | Hoisted to the top of the block          |
+| Re-declaration          | Allows re-declaration within the same scope  | Does not allow re-declaration in the same block  | Does not allow re-declaration in the same block  |
+| Value Assignment        | Can be assigned and reassigned               | Can be assigned and reassigned               | Must be assigned a value during declaration, and cannot be reassigned |
+| Temporal Dead Zone (TDZ)| Not affected by Temporal Dead Zone          | Affected by Temporal Dead Zone            | Affected by Temporal Dead Zone            |
+| Global Object Property  | Creates a property on the global object (window in browsers) | Does not create a property on the global object | Does not create a property on the global object |
+| Constant                | Not a constant; value can be changed         | Not a constant; value can be changed         | Constant; value cannot be changed          |
+
+In summary, `var` is function-scoped and hoisted to the top of the function, `let` and `const` are block-scoped and hoisted to the top of the block. Both `let` and `const` enforce the Temporal Dead Zone, preventing access to variables before their declaration within a block. `var` allows re-declaration within the same scope, while `let` and `const` do not. `const` requires a value to be assigned during declaration and cannot be reassigned once set, making it a true constant.
 
 5. **What is the purpose of `async` and `await` in JavaScript?**
    - `async` and `await` are used to handle asynchronous operations in a more synchronous-looking way, simplifying the code and making it easier to read and maintain.
