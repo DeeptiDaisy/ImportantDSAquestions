@@ -73,7 +73,11 @@ In summary, `var` is function-scoped and hoisted to the top of the function, `le
 
 5. **What is the purpose of `async` and `await` in JavaScript?**
    - `async` and `await` are used to handle asynchronous operations in a more synchronous-looking way, simplifying the code and making it easier to read and maintain.
-</details>
+ 
+
+6. **Difference in null and undefined?**
+   - In JavaScript, "null" represents an intentional absence of any value. It is used to indicate that a variable has been explicitly assigned to nothing or has no value. On the other hand, "undefined" means that a variable has been declared but has not been assigned any value yet. Essentially, "undefined" denotes the absence of a value at all, even though the variable has been declared.
+     </details>
 
 Feel free to review these questions and answers to strengthen your knowledge of HTML, CSS, and JavaScript. Good luck with your interviews!
 
